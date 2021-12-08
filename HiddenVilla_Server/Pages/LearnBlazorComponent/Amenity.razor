@@ -1,0 +1,22 @@
+﻿@using HiddenVilla_Server.Model;
+
+<div class="bg-light border p-2 col-5 offset-1" @onclick="(args) => AmenitySelected(args, AmenityModel.Name)">
+    <h4 class="text-secondary">Amenity - @AmenityModel.Id</h4>
+
+    @AmenityModel.Name <br />
+    @AmenityModel.Description <br />
+</div>
+
+@code {
+    [Parameter]
+    public BlazorAmenity AmenityModel { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnAmenityClicked { get; set;}
+
+    public async Task AmenitySelected(MouseEventArgs e, string name)
+    {
+        await OnAmenityClicked.InvokeAsync(name);
+    }
+
+}

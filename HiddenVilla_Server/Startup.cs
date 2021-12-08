@@ -1,3 +1,4 @@
+﻿using FindRazorSourceFile.Server;
 using HiddenVilla_Server.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -37,6 +38,7 @@ namespace HiddenVilla_Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseFindRazorSourceFile();
             }
             else
             {
