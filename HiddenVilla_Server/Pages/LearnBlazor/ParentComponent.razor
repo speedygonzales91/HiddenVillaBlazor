@@ -1,0 +1,31 @@
+﻿@page "/ParentComponent"
+
+<h1 class="text-danger">Parent Child Component</h1>
+<CascadingValue Value="@textForGrandChild" Name="MessageFromGrandParent">
+    <CascadingValue Value="@luckyNumberforGrandChild" Name="LuckyNumberFromGrandParent">
+
+
+
+        <ChildComponent OnClickBtnMethod="ShowMessage" Title="This title is passed as parameter from Parent Component">
+
+            <ChildContent> Render fragment From Parent! Wohoo!</ChildContent>
+            <DangerChildContent> Danger Child fragment</DangerChildContent>
+
+        </ChildComponent>
+    </CascadingValue>
+</CascadingValue>
+<AnotherChildComponent Placeholder="Enter room name from Parent component" MaxLength="5"></AnotherChildComponent>
+
+<p><b>@messageText</b></p>
+
+@code {
+
+    private string messageText = "";
+    private string textForGrandChild = "This is a message from Grand parent";
+    private string luckyNumberforGrandChild = "7";
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        messageText = "Blazzing text from parent";
+    }
+}

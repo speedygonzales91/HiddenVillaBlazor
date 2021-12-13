@@ -19,7 +19,10 @@
     <h2 class="text-info">Hotel Amenitie's [Assignment]'</h2>
     @foreach (var amenity in Amenities)
     {
-        <Amenity AmenityModel="amenity" OnAmenityClicked="SetSelectedAmenityName"></Amenity>
+        <Amenity AmenityModel="amenity" OnAmenityClicked="SetSelectedAmenityName">
+            <FirstFragment>#1</FirstFragment>
+            <SecondFragment>#2</SecondFragment>
+        </Amenity>
     }
 </div>
 
@@ -45,7 +48,7 @@
             IsActive = true,
             Price = 499,
             RoomProps = new List<BlazorRoomProp>
-            {
+        {
             new Model.BlazorRoomProp {Id = 1, Name = "Sq Ft", Value = "100"},
             new Model.BlazorRoomProp {Id = 2, Name = "Occupancy", Value = "3"},
             }
@@ -57,7 +60,7 @@
             IsActive = true,
             Price = 699,
             RoomProps = new List<BlazorRoomProp>
-                {
+            {
                 new Model.BlazorRoomProp {Id = 1, Name = "Sq Ft", Value = "150"},
                 new Model.BlazorRoomProp {Id = 2, Name = "Occupancy", Value = "6"},
                 }

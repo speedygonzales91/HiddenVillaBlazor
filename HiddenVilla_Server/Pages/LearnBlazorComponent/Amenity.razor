@@ -5,6 +5,7 @@
 
     @AmenityModel.Name <br />
     @AmenityModel.Description <br />
+    RF from Parent @FirstFragment @SecondFragment
 </div>
 
 @code {
@@ -13,6 +14,12 @@
 
     [Parameter]
     public EventCallback<string> OnAmenityClicked { get; set;}
+
+    [Parameter]
+    public RenderFragment FirstFragment { get; set; }
+
+    [Parameter]
+    public RenderFragment SecondFragment { get; set; }
 
     public async Task AmenitySelected(MouseEventArgs e, string name)
     {
