@@ -6,7 +6,9 @@
 
 
 
-        <ChildComponent OnClickBtnMethod="ShowMessage" Title="This title is passed as parameter from Parent Component">
+        <ChildComponent @ref="childComp"
+                        OnClickBtnMethod="ShowMessage"
+                        Title="This title is passed as parameter from Parent Component">
 
             <ChildContent> Render fragment From Parent! Wohoo!</ChildContent>
             <DangerChildContent> Danger Child fragment</DangerChildContent>
@@ -18,7 +20,13 @@
 
 <p><b>@messageText</b></p>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="()=>childComp.ShowToastrSuccess()">Show alert!</button>
+</div>
+
 @code {
+
+    private ChildComponent childComp;
 
     private string messageText = "";
     private string textForGrandChild = "This is a message from Grand parent";
