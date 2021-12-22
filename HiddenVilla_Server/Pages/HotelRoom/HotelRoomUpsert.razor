@@ -10,6 +10,7 @@
 @inject IFileUpload FileUpload
 
 @inject IJSRuntime JSRuntime
+@*@attribute [Authorize]*@
 <div class="row mt-2 mb-5">
     <h3 class="card-title text-info mb-3 ml-3">@Title Hotel Room</h3>
     <div class="col-md-12">
@@ -90,7 +91,7 @@
                                         <div class="room-image" style="background:url(@roomImage) 50% 50%;">
                                             <span class="room-image-title">@serial</span>
                                         </div>
-                                        <button type="button" class="btn btn-outline-danger btn-block mt-4" @onclick="()=>DeletePhoto(roomImage)" >Delete</button>
+                                        <button type="button" class="btn btn-outline-danger btn-block mt-4" @onclick="()=>DeletePhoto(roomImage)">Delete</button>
                                     </div>
                                     serial++;
                                 }
@@ -122,8 +123,18 @@
     private string Title { get; set; } = "Create";
     private bool IsImageUploadProcessStarted { get; set; } = false;
 
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthenticationState { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
+        var authenticationState = await AuthenticationState;
+        //if (!authenticationState.User.Identity.IsAuthenticated)
+        if (!authenticationState.User.IsInRole(Common.SD.Role_Admin))
+        {
+            var uri = new Uri(NavigationManager.Uri);
+            NavigationManager.NavigateTo($"/identity/account/login?returnUrl={uri.LocalPath}");
+        }
         if (Id is not null)
         {
             //updating
@@ -273,7 +284,7 @@
     {
         foreach (var imageUrl in HotelRoomModel.ImgeUrls)
         {
-            if (HotelRoomModel.HotelRoomImages == null || HotelRoomModel.HotelRoomImages.Where(x=>x.RoomImageUrl == imageUrl).Count() == 0)
+            if (HotelRoomModel.HotelRoomImages == null || HotelRoomModel.HotelRoomImages.Where(x => x.RoomImageUrl == imageUrl).Count() == 0)
             {
                 RoomImage = new HotelRoomImageDTO
                 {

@@ -1,0 +1,34 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SigninManager
+@{
+    ViewData["Title"] = "Log out";
+}
+
+
+@functions {
+    public async Task<IActionResult> OnGet()
+    {
+        if (SigninManager.IsSignedIn(User))
+        {
+            await SigninManager.SignOutAsync();
+        }
+        return Redirect("~/");
+    }
+}
+
+@*<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+            </form>
+        }
+        else
+        {
+            <p>You have successfully logged out of the application.</p>
+        }
+    }
+</header>*@
