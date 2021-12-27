@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Busine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{2D82613E-D5A1-43FC-98F0-6CAE333030C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenVilla_Api", "HiddenVilla_Api\HiddenVilla_Api.csproj", "{ED109B52-2F8E-4E06-854B-AD7EC348A97E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2D82613E-D5A1-43FC-98F0-6CAE333030C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D82613E-D5A1-43FC-98F0-6CAE333030C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D82613E-D5A1-43FC-98F0-6CAE333030C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED109B52-2F8E-4E06-854B-AD7EC348A97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED109B52-2F8E-4E06-854B-AD7EC348A97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED109B52-2F8E-4E06-854B-AD7EC348A97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED109B52-2F8E-4E06-854B-AD7EC348A97E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
