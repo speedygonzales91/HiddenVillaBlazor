@@ -20,8 +20,12 @@ namespace Models
         public string Details { get; set; }
         public string SqFt { get; set; }
 
+        public double TotalDays { get; set; }
+        public double TotalAmount { get; set; }
+
         public virtual ICollection<HotelRoomImageDTO> HotelRoomImages { get; set; }
         public virtual List<string> ImgeUrls { get; set; }
+
 
     }
 }
