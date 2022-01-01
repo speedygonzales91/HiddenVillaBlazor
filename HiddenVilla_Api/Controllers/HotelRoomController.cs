@@ -90,7 +90,7 @@ namespace HiddenVilla_Api.Controllers
                 });
             }
 
-            var roomDetails = _hotelRoomRepository.GetHotelRoom(hotelRoomId.Value, checkInDate, checkOutDate);
+            var roomDetails = await _hotelRoomRepository.GetHotelRoom(hotelRoomId.Value, checkInDate, checkOutDate);
             if (roomDetails is null)
             {
                 return BadRequest(new ErrorModel() { Title = "", ErrorMessage = "Invalid Room Id", StatusCode = StatusCodes.Status404NotFound });
