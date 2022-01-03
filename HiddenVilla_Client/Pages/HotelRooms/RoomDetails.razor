@@ -5,6 +5,8 @@
 @inject IStripePaymentService paymentService
 @inject IRoomOrderDetailsService roomOrderService
 
+@using Microsoft.AspNetCore.Authorization 
+@attribute [Authorize(Roles = SD.Role_Customer)]
 
 @if (HotelBooking?.OrderDetails?.HotelRoomDTO?.Id == null)
 {
@@ -168,6 +170,14 @@ else
 
                     var roomOrderDetailsSaved = await roomOrderService.SaveRoomOrderDetailsDTO(HotelBooking.OrderDetails);
                     await localStorage.SetItemAsync(SD.Local_RoomOrderDetails, roomOrderDetailsSaved);
+                }
+
+                if (await localStorage.GetItemAsync<UserDTO>(SD.Local_UserDetails) != null)
+                {
+                    var userInfo = await localStorage.GetItemAsync<UserDTO>(SD.Local_UserDetails);
+                    HotelBooking.OrderDetails.Name = userInfo.Name;
+                    HotelBooking.OrderDetails.Email = userInfo.Email;
+                    HotelBooking.OrderDetails.Phone = userInfo.PhoneNo;
                 }
             }
         }
